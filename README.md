@@ -6,7 +6,7 @@ Templates that can be used with the [Nix](https://nixos.org) Flakes system.
 
 ```sh
 mkdir my-project
-nix flake init --reload -t github:cor/flake-templates\#rust
+nix flake init --refresh -t github:cor/flake-templates\#rust
 ```
 
 
@@ -16,7 +16,7 @@ nix flake init --reload -t github:cor/flake-templates\#rust
 
 ```sh
 mkdir my-project
-nix flake init --reload -t github:cor/flake-templates\#svelte
+nix flake init --refresh -t github:cor/flake-templates\#svelte
 ```
 
 [Read the full Svelte instructions here](./svelte.md)
