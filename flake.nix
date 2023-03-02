@@ -3,7 +3,7 @@
 
   outputs = _: {
     templates = {
-      rust = rec {
+      rust = {
         description =
           "Rust flake template with `rust-analyzer`, `clippy`, and `bacon`. Built using `flake-parts` and `rust-overlay`.";
         path = ./rust;
@@ -31,6 +31,12 @@
             nix build
             ```
         '';
+      };
+
+      svelte = {
+        description =
+          "Svelte flake template with `svelte-server`. Built using `flake-parts`.";
+        path - ./svelte;
       };
     };
   };
