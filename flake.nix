@@ -36,7 +36,7 @@
       svelte = {
         description =
           "Svelte flake template with `svelte-server`. Built using `flake-parts`.";
-        path - ./svelte;
+        path = ./svelte;
       };
     };
   };
