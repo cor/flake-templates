@@ -46,6 +46,7 @@
               buildInputs = (with pkgs; [
                 nixfmt
                 nodejs
+                yarn
                 nil
                 nodePackages.svelte-language-server
                 nodePackages.typescript-language-server
