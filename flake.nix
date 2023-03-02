@@ -41,7 +41,12 @@
             # Svelte flake template
 
             ## Initializing your project
-            This assumes that you added this template to an empty directory.
+            This assumes that you've already ran
+            
+            ```bash
+            mkdir my-project
+            nix flake init --refresh -t github:cor/flake-templates\#svelte
+            ```
 
             You will need to run the following commands once in order to create your Svelte app:
 
