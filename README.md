@@ -2,10 +2,20 @@
 
 Templates that can be used with the [Nix](https://nixos.org) Flakes system. 
 
-They can be used like this:
+## Rust
 
 ```sh
-nix flake init -t github:cor/flake-templates\#rust
+mkdir my-project
+nix flake init --reload -t github:cor/flake-templates\#rust
+```
+
+This instantiates the `rust` flake template.
+
+## Svelte
+
+```sh
+mkdir my-project
+nix flake init --reload -t github:cor/flake-templates\#svelte
 ```
 
 This instantiates the `rust` flake template.
