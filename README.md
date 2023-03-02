@@ -9,7 +9,8 @@ mkdir my-project
 nix flake init --reload -t github:cor/flake-templates\#rust
 ```
 
-This instantiates the `rust` flake template.
+
+[Read the full Rust instructions here](./rust.md)
 
 ## Svelte
 
@@ -18,8 +19,10 @@ mkdir my-project
 nix flake init --reload -t github:cor/flake-templates\#svelte
 ```
 
-This instantiates the `rust` flake template.
+[Read the full Svelte instructions here](./svelte.md)
 
+
+## Other 
 
 To see which templates are defined by this repository, run
 
