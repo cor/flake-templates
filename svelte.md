@@ -46,7 +46,7 @@ git commit -m "init"
 You can now reproducibly build and run your Svelte project with Nix!
 
 ```bash
-nix run
+ORIGIN=http://localhost:3000 nix run
 ```
 
 ## Enter a Svelte devshell 
