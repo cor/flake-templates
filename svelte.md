@@ -17,6 +17,7 @@ You will need to run the following commands once in order to create your Svelte 
 nix develop
 npm create svelte@latest .
 echo "result" >> .gitignore
+echo ".direnv" >> .gitignore
 yarn
 yarn add -D @sveltejs/adapter-node
 ```
