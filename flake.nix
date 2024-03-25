@@ -10,6 +10,13 @@
         welcomeText = builtins.readFile ./rust.md;
       };
 
+      python = {
+        description =
+          "Python flake template with support for adding dependencies.";
+        path = ./python;
+        welcomeText = builtins.readFile ./python.md;
+      };
+
       svelte = {
         description =
           "Svelte flake template using `adapter-node` with `svelte-server`. Built using `flake-parts`.";
