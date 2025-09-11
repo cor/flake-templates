@@ -8,39 +8,69 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    crane = {
-      url = "github:ipetkov/crane";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    crane.url = "github:ipetkov/crane";
   };
-  outputs = inputs@{ self, nixpkgs, rust-overlay, flake-parts, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      rust-overlay,
+      flake-parts,
+      ...
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems =
-        [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
-      perSystem = { config, self', inputs', pkgs, system, ... }:
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+      perSystem =
+        {
+          config,
+          self',
+          inputs',
+          pkgs,
+          system,
+          ...
+        }:
         let
           crane = rec {
-            lib = self.inputs.crane.lib.${system};
+            lib = inputs.crane.mkLib pkgs;
             stable = lib.overrideToolchain self'.packages.rust-stable;
           };
-        in {
+        in
+        {
           packages = {
             rust-stable = inputs'.rust-overlay.packages.rust.override {
-              extensions = [ "rust-src" "rust-analyzer" "clippy" ];
+              extensions = [
+                "rust-src"
+                "rust-analyzer"
+                "clippy"
+              ];
             };
             default = crane.stable.buildPackage {
               src = ./.;
               cargoBuildCommand = "cargo build --release";
-              buildInputs = pkgs.lib.optionals pkgs.stdenv.isDarwin (with pkgs.darwin.apple_sdk.frameworks; [ Security ]);
+              buildInputs = pkgs.lib.optionals pkgs.stdenv.isDarwin (
+                with pkgs.darwin.apple_sdk.frameworks; [ Security ]
+              );
             };
           };
           devShells = {
             default = pkgs.mkShell {
-              buildInputs = [ self'.packages.rust-stable ]
-                ++ (with pkgs; [ bacon nil hyperfine cargo-flamegraph ])
-                ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin (with pkgs.darwin.apple_sdk.frameworks; [ Security ]));
+              buildInputs = [
+                self'.packages.rust-stable
+              ]
+              ++ (with pkgs; [
+                bacon
+                nil
+                hyperfine
+                cargo-flamegraph
+              ])
+              ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin (with pkgs.darwin.apple_sdk.frameworks; [ Security ]));
             };
           };
         };
     };
 }
+
