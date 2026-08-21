@@ -1,3 +1,5 @@
+
+
 # flake-templates
 
 Templates that can be used with the [Nix](https://nixos.org) Flakes system. 
@@ -6,6 +8,7 @@ Templates that can be used with the [Nix](https://nixos.org) Flakes system.
 
 ```sh
 mkdir my-project
+cd my-project
 nix flake init --refresh -t github:cor/flake-templates\#rust
 ```
 
@@ -29,4 +32,3 @@ To see which templates are defined by this repository, run
 ```sh
 nix flake show github:cor/flake-templates
 ```
-
